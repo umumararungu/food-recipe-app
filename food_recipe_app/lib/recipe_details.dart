@@ -4,7 +4,7 @@ import 'api.dart';
 class RecipeDetailScreen extends StatefulWidget {
   final String mealId;
 
-  const RecipeDetailScreen({Key? key, required this.mealId}) : super(key: key);
+  const RecipeDetailScreen({super.key, required this.mealId});
 
   @override
   _RecipeDetailScreenState createState() => _RecipeDetailScreenState();
