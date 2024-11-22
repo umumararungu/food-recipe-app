@@ -6,6 +6,7 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -27,7 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     } else {
       setState(() {
-        meals = ApiService().fetchMeals(); // Revert to default meals if search is empty
+        meals =
+            ApiService()
+                .fetchMeals(); // Revert to default meals if search is empty
       });
     }
   }
@@ -66,27 +69,52 @@ class _HomeScreenState extends State<HomeScreen> {
             return ListView.builder(
               itemCount: mealList.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  leading: mealList[index]['strMealThumb'] != null
-                      ? Image.network(
-                          mealList[index]['strMealThumb'],
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        )
-                      : Icon(Icons.fastfood),
-                  title: Text(mealList[index]['strMeal']),
-                  onTap: () {
-                    // Navigate to Recipe Detail Screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RecipeDetailScreen(
-                          mealId: mealList[index]['idMeal'], // Pass the meal ID
+                return Card(
+                  margin: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 16.0,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        mealList[index]['strMealThumb'] != null
+                            ? Image.network(
+                              mealList[index]['strMealThumb'],
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            )
+                            : Icon(Icons.fastfood, size: 50),
+                        const SizedBox(width: 16.0),
+                        Expanded(
+                          child: Text(
+                            mealList[index]['strMeal'],
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                        IconButton(
+                          icon: Icon(Icons.chevron_right),
+                          onPressed: () {
+                            // Navigate to Recipe Detail Screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (context) => RecipeDetailScreen(
+                                      mealId:
+                                          mealList[index]['idMeal'], // Pass the meal ID
+                                    ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             );

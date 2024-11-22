@@ -7,6 +7,7 @@ class RecipeDetailScreen extends StatefulWidget {
   const RecipeDetailScreen({super.key, required this.mealId});
 
   @override
+  // ignore: library_private_types_in_public_api
   _RecipeDetailScreenState createState() => _RecipeDetailScreenState();
 }
 
@@ -45,7 +46,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                       meal['strMealThumb'],
                       fit: BoxFit.cover,
                     ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 8),
                   // Meal Name
                   Text(
                     meal['strMeal'],
@@ -63,7 +64,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  // SizedBox(height: 8),
                   Text(meal['strInstructions'] ?? 'No instructions available.'),
                   SizedBox(height: 20),
                   // Ingredients
@@ -74,7 +75,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  // SizedBox(height: 8),
                   _buildIngredients(meal),
                 ],
               ),
