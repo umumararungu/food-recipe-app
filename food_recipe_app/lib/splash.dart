@@ -8,9 +8,15 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome'),
+        // title: Text('Welcome'),
       ),
-      body: Center(
+      body: DecoratedBox( 
+          // BoxDecoration takes the image
+          decoration: BoxDecoration( 
+            // Image set to background of the body
+            image: DecorationImage( image: AssetImage('images/bg.jpeg'), fit: BoxFit.cover),
+          ),
+      child: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -52,6 +58,7 @@ class WelcomeScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
       ),
     );
   }
