@@ -35,7 +35,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
             final meal = snapshot.data!;
-            return Padding(
+            return SingleChildScrollView( // Wrap with SingleChildScrollView
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +64,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  // SizedBox(height: 8),
+                  SizedBox(height: 8),
                   Text(meal['strInstructions'] ?? 'No instructions available.'),
                   SizedBox(height: 20),
                   // Ingredients
@@ -75,7 +75,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  // SizedBox(height: 8),
+                  SizedBox(height: 8),
                   _buildIngredients(meal),
                 ],
               ),

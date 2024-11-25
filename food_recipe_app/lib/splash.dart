@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'home.dart'; // Import your home screen file
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +11,16 @@ class WelcomeScreen extends StatelessWidget {
         // title: Text('Welcome'),
       ),
       body: DecoratedBox( 
+        
+        
           // BoxDecoration takes the image
           decoration: BoxDecoration( 
             // Image set to background of the body
-            image: DecorationImage( image: AssetImage('images/bg.jpeg'), fit: BoxFit.cover),
+            image: DecorationImage( image: AssetImage('assets/images/2.webp'),fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.5), // Change opacity to black
+              BlendMode.darken, // Use the darken blend mode
+            ),),
           ),
       child: Center(
         child: Padding(
@@ -29,16 +35,17 @@ class WelcomeScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 255, 255, 255),
                 ),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20),
               // Description text
               Text(
-                'Discover delicious recipes and learn how to cook your favorite meals. Search for recipes, save your favorites, and more!',
+                'Discover delicious recipes and learn how to cook your favorite meals.',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey[700],
+                  color: const Color.fromARGB(255, 255, 255, 255),
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -53,7 +60,11 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text('Get Started'),
+                child: Text("Let's cook 🥣",
+                  style: TextStyle(
+                  fontSize: 18,
+                  color: const Color.fromARGB(255, 0, 131, 154),
+                ),),
               ),
             ],
           ),
