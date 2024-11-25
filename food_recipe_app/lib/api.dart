@@ -6,7 +6,7 @@ class ApiService {
 
   Future<List<dynamic>> fetchMeals() async {
     final response = await http.get(
-      Uri.parse('${baseUrl}filter.php?c=fish'), // Fetch seafood meals
+      Uri.parse('${baseUrl}filter.php?c=Seafood'), // Fetch seafood meals
     );
 
     if (response.statusCode == 200) {
